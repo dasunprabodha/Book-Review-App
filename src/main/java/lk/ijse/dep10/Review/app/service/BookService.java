@@ -15,15 +15,16 @@ import java.util.Optional;
 @Service
 public class BookService {
     @Autowired
-    BookDao bookDao;
+   private BookDao bookDao;
 
     public ResponseEntity<List<Book>> getAllBooks() {
         try {
-            return new ResponseEntity<>(bookDao.findAll(), HttpStatus.OK);
-        }catch (Exception e){
+
+            List<Book> books = bookDao.findAll();
+            return new ResponseEntity<>(books, HttpStatus.OK);        }catch (Exception e){
             e.printStackTrace();
         }
-        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
@@ -38,7 +39,7 @@ public class BookService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -53,7 +54,7 @@ public class BookService {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     }
