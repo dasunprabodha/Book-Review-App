@@ -15,10 +15,10 @@ import java.util.List;
 @RequestMapping("api/v1/books")
 public class BookController {
     @Autowired
-    BookService bookService;
+   private BookService bookService;
 
     @Autowired
-    BookDao bookDao;
+   private BookDao bookDao;
 
     @GetMapping
     public ResponseEntity<List<Book>> getAllBooks(){
