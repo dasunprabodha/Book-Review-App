@@ -31,7 +31,6 @@ public class ReviewController {
             Optional<Book> optionalBook = bookDao.findById(bookId);
 
             if (!optionalBook.isPresent()) {
-                // Handle the case when the book with the provided ID doesn't exist
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
             }
 
