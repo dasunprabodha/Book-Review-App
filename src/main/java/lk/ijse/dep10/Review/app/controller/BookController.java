@@ -28,6 +28,10 @@ public class BookController {
      public ResponseEntity<Book> getBookById(@PathVariable("id") Integer id) {
          return bookService.getBookById(id);
      }
+ @GetMapping("{isbn}")
+     public ResponseEntity<Book> getBookByIsbn(@PathVariable("isbn") String isbn) {
+         return bookService.getBookByIsbn(isbn);
+     }
 
 
 }

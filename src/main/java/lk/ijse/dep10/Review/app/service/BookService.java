@@ -42,4 +42,19 @@ public class BookService {
         }
     }
 
-}
+    public ResponseEntity<Book> getBookByIsbn(String isbn) {
+        try {
+            Optional<Book> optionalBook = bookDao.findByIsbn(isbn);
+
+            if (optionalBook.isPresent()) {
+                return new ResponseEntity<>(optionalBook.get(), HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    }
+
